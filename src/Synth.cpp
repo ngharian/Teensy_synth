@@ -36,7 +36,10 @@ void	Synth::fillFrequencies()
 			}
 		}
 		if(triggerTime[i] == 0)
+		{
 			triggerTime[i] = millis()
+			releaseTime[i] = 0;
+		}
 		activeNotes++;
 		Osc1.frequencies[i] = Osc1.applyOctave(noteArray[i]);
 		//Osc2.frequencies[i] = Osc2.applyOctave(noteArray[i]);
