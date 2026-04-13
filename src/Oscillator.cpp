@@ -37,7 +37,7 @@ float	Oscillator::getCurrentAmp(int n)
 	float	currentAmp;
 	//applyLFO();
 	currentAmp = getWaveAmp(phases[n]);
-	currentAmp = applyADSR(currentAmp);
+	currentAmp = applyADSR(currentAmp); //mettre a la fin de la boucle de lecture de note pour chaque echantillon? => applique l'ADSR une seule fois au lieu de max NUMBER_NOTES fois
 	return (currentAmp);
 }
 

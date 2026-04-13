@@ -7,9 +7,6 @@ void	Synth::readParam()
 	//Osc2.readParam();
 }
 
-//TODO
-//tableau startTimeAttack avec timestamp correspondant au moment ou on appuye sur la touche
-//tableau startTimeRelease avec timeStamp correspondant au moment ou on relache
 void	Synth::fillFrequencies()
 {
 	activeNotes = 0;
