@@ -26,6 +26,7 @@ void	Oscillator::resetPhase()
 
 void	Oscillator::readParam()
 {
+	//rajouter lecture d'ADSR
 	phase = 0; // rajouter la lecture plus tard  
 	octave = map(analogRead(OCT_PIN), 0, 4096, 0, 4);
 	typeWave = map(analogRead(WAVE_PIN), 0, 4096, 0, 3);
@@ -36,7 +37,7 @@ float	Oscillator::getCurrentAmp(int n)
 	float	currentAmp;
 	//applyLFO();
 	currentAmp = getWaveAmp(phases[n]);
-	//applyADSR();
+	currentAmp = applyADSR(currentAmp);
 	return (currentAmp);
 }
 
@@ -69,4 +70,16 @@ void	Oscillator::incrementPhase(int index)
 	phases[index] += frequencies[index] / SAMPLE_RATE;
 	if (phases[index] >= 1.0)
 		phases[index] -= 1.0;
+}
+
+void	Oscillator::applyADSR(float currentAmp)
+{
+	unsigned long currentTime = millis();
+
+	if (synth.triggerTime[i] != 0)
+	{
+		//calcul AttackDecay
+	}
+	else if (synth.releasTime[i])
+		//calcul release
 }

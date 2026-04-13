@@ -8,25 +8,31 @@
 class Oscillator
 {
 private:
-  int	octave;
-  float	phase;
-  int	typeWave;
-  float	attack;
-  float	decay;
-  float	sustain;
-  float	release;
-  float	phases[NUMBER_NOTES];
+	//Osc var
+	int		octave;
+	float	phase;
+	int		typeWave;
 
-  float	getWaveAmp(float phase);
+	//ADSR var
+	int		attackValue;
+	float	attackFactor;
+	int		decayValue;
+	float	decayFactor;
+	float	sustainValue;
+	int		releaseValue;
+	float	releaseFactore;
+	float	phases[NUMBER_NOTES];
 
+	float	getWaveAmp(float phase);
+	float	applyADSR(float currentAmp);
 public:
-  float	frequencies[NUMBER_NOTES];
+	float			frequencies[NUMBER_NOTES];
 
-  float	applyOctave(float frequencie);
-  void	resetPhase();
-  void	readParam();
-  float	getCurrentAmp(int n);
-  void	incrementPhase(int index);
+	float	applyOctave(float frequencie);
+	void	resetPhase();
+	void	readParam();
+	float	getCurrentAmp(int n);
+	void	incrementPhase(int index);
 };
 
 # endif

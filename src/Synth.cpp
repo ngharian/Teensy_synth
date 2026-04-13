@@ -19,10 +19,24 @@ void	Synth::fillFrequencies()
 		int readed = digitalRead(pinArray[i]);
 		if (!readed)
 		{
-			Osc1.frequencies[i] = 0;
-			//Osc2.frequencies[i] = 0;
-			continue ;
+			if (releaseTime[i] == 0)
+			{
+				if (triggerTime[i] != 0)
+				{
+					triggerTime[i] = 0;
+					releaseTime[i] = millis();
+					activeNotes++;
+				}
+				else
+				{
+					Osc1.frequencies[i] = 0;
+					//Osc2.frequencies[i] = 0;
+					continue;
+				}
+			}
 		}
+		if(triggerTime[i] == 0)
+			triggerTime[i] = millis()
 		activeNotes++;
 		Osc1.frequencies[i] = Osc1.applyOctave(noteArray[i]);
 		//Osc2.frequencies[i] = Osc2.applyOctave(noteArray[i]);
